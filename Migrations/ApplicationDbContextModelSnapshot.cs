@@ -133,6 +133,10 @@ namespace CantineAPI.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PlatPrincipal")
                         .IsRequired()
                         .HasColumnType("TEXT");
