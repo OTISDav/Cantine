@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CantineAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250616203140_InitialCreate")]
+    [Migration("20250617081505_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
