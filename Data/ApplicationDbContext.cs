@@ -11,5 +11,9 @@ namespace CantineAPI.Data
 
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+
+        public DbSet<Annotation> Annotations { get; set; }
+
+
     }
 }

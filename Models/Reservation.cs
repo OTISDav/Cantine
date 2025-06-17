@@ -1,4 +1,6 @@
-global using System;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using CantineAPI.Models;  // Assure-toi que le namespace correspond à ton projet
 
 namespace CantineAPI.Models
