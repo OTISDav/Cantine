@@ -1,3 +1,6 @@
+using System;
+using Microsoft.AspNetCore.Identity;
+using CantineAPI.DTOs;
 namespace CantineAPI.DTOs
 {
     public class MenuDTO

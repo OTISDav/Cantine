@@ -9,9 +9,11 @@
 /home/otis/CantineAPI/bin/Debug/net8.0/Azure.Identity.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Humanizer.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Authorization.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.Metadata.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll
@@ -26,9 +28,11 @@
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Sqlite.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll
+/home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Identity.Client.dll
 /home/otis/CantineAPI/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll

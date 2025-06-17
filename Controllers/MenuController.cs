@@ -1,11 +1,13 @@
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using CantineAPI.Models;
-using CantineAPI.DTOs;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using CantineAPI.DTOs;       
+using CantineAPI.Data;      
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Linq;
+using System;
+
 
 namespace CantineAPI.Controllers
 {
