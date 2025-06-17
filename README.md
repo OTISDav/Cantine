@@ -22,8 +22,7 @@ CantineAPI est une API REST pour la gestion de cantine scolaire :
 ---
 ##Url Swagger
 
-https://localhost:7001/swagger/
-
+](https://localhost:7001/swagger/index.html)
 
 
 ## 🚀 Lancement du projet
