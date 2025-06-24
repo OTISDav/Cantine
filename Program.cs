@@ -8,12 +8,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuration Kestrel
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Configure(builder.Configuration.GetSection("Kestrel"));
-});
-
+// --- Déplacer ces configurations ici, avant le app.Build() ---
 // DB SQLite
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -46,6 +41,9 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
     };
 });
+
+// ********** AJOUTEZ CETTE LIGNE **********
+builder.Services.AddAuthorization(); // C'est crucial pour UseAuthorization()
 
 // Swagger
 builder.Services.AddControllers();
@@ -84,8 +82,29 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 var app = builder.Build();
+
+// --- PLACEZ LE BLOC DE MIGRATION JUSTE APRÈS app.Build() ---
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        context.Database.Migrate(); // Applique toutes les migrations en attente
+
+        // Si vous avez du code de seeding (données initiales)
+        // await SeedData.Initialize(services);
+
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while migrating or seeding the database.");
+    }
+}
+// --- FIN DU BLOC DE MIGRATION ---
+
 
 // Pipeline
 if (app.Environment.IsDevelopment())
@@ -97,7 +116,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthorization(); // Cette ligne aura maintenant les services nécessaires
 
 app.UseCors("AllowAll");
 

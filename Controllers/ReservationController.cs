@@ -36,9 +36,11 @@ namespace CantineAPI.Controllers
             }
 
             var reservations = await query
+                .Include(r => r.User)
                 .Select(r => new ReservationDTO
                 {
                     Id = r.Id,
+                    UserName = r.User.FullName,
                     UserId = r.UserId,
                     MenuId = r.MenuId,
                     ReservationDate = r.ReservationDate,
@@ -127,7 +129,6 @@ namespace CantineAPI.Controllers
 
         // DELETE api/reservation/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")] // Seuls les admins peuvent supprimer
         public async Task<IActionResult> DeleteReservation(int id)
         {
             var reservation = await _context.Reservations.FindAsync(id);

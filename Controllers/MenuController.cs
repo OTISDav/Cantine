@@ -29,6 +29,7 @@ namespace CantineAPI.Controllers
             var menus = await _context.Menus
                 .Select(m => new MenuDTO
                 {
+                    Id = m.Id,
                     Date = m.Date,
                     PlatPrincipal = m.PlatPrincipal,
                     Dessert = m.Dessert,
@@ -48,6 +49,7 @@ namespace CantineAPI.Controllers
 
             var menuDto = new MenuDTO
             {
+                Id = menu.Id,
                 Date = menu.Date,
                 PlatPrincipal = menu.PlatPrincipal,
                 Dessert = menu.Dessert,
@@ -64,6 +66,7 @@ namespace CantineAPI.Controllers
         {
             var menu = new Menu
             {
+                Id = menuDto.Id,
                 Date = menuDto.Date,
                 PlatPrincipal = menuDto.PlatPrincipal,
                 Dessert = menuDto.Dessert,
@@ -84,6 +87,7 @@ namespace CantineAPI.Controllers
             var menu = await _context.Menus.FindAsync(id);
             if (menu == null) return NotFound();
 
+            menu.Id = menuDto.Id;
             menu.Date = menuDto.Date;
             menu.PlatPrincipal = menuDto.PlatPrincipal;
             menu.Dessert = menuDto.Dessert;
