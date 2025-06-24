@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using CantineAPI.Models;
+using CantineAPI.Models; // Assurez-vous que ce using est présent pour AuthResponseDto
 using CantineAPI.DTOs;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Collections.Generic; // Nécéssaire pour List<Claim>
 
 namespace CantineAPI.Controllers
 {
@@ -57,7 +58,6 @@ namespace CantineAPI.Controllers
         }
 
 
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO model)
         {
@@ -74,7 +74,14 @@ namespace CantineAPI.Controllers
             var roles = await _userManager.GetRolesAsync(user);
             var token = GenerateJwtToken(user, roles);
 
-            return Ok(new { token });
+            // --- DEBUT DE LA MODIFICATION ---
+            // Retourne le token ET l'ID de l'utilisateur dans un AuthResponseDto
+            return Ok(new AuthResponseDto
+            {
+                Token = token,
+                UserId = user.Id // L'ID de l'utilisateur est maintenant inclus ici
+            });
+            // --- FIN DE LA MODIFICATION ---
         }
 
 
@@ -82,7 +89,7 @@ namespace CantineAPI.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id), // L'ID utilisateur
                 new Claim(ClaimTypes.Email, user.Email)
             };
 
@@ -96,13 +103,10 @@ namespace CantineAPI.Controllers
                 issuer: _config["Jwt:Issuer"],
                 audience: _config["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddHours(3),
+                expires: DateTime.Now.AddHours(3), // Token valide 3 heures
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
-
 }
-
-
