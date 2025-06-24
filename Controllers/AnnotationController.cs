@@ -2,9 +2,9 @@ using CantineAPI.Data;
 using CantineAPI.DTOs;
 using CantineAPI.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CantineAPI.Controllers
 {
@@ -20,27 +20,26 @@ namespace CantineAPI.Controllers
         }
 
         // POST api/annotation
-        // Un utilisateur note un menu (note de 1 à 5)
         [HttpPost]
-        [Authorize] // Utilisateur connecté
+        [Authorize]
         public async Task<ActionResult<AnnotationDTO>> CreateAnnotation(AnnotationCreateDTO dto)
         {
-            // Récupérer l'id utilisateur connecté (ici on suppose User.Identity.Name contient l'ID)
-            string userId = User.Identity?.Name ?? "anonymous";
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return Unauthorized("Utilisateur non authentifié.");
 
-            // Vérifier si l'utilisateur a déjà noté ce menu (une seule note par utilisateur/menu)
+            var menu = await _context.Menus.FindAsync(dto.MenuId);
+            if (menu == null)
+                return BadRequest("Menu inexistant.");
+
             var existing = await _context.Annotations
                 .FirstOrDefaultAsync(a => a.UserId == userId && a.MenuId == dto.MenuId);
 
             if (existing != null)
-            {
                 return BadRequest("Vous avez déjà noté ce menu.");
-            }
 
             if (dto.Note < 1 || dto.Note > 5)
-            {
                 return BadRequest("La note doit être comprise entre 1 et 5.");
-            }
 
             var annotation = new Annotation
             {
@@ -75,13 +74,11 @@ namespace CantineAPI.Controllers
             var annotation = await _context.Annotations.FindAsync(id);
             if (annotation == null) return NotFound();
 
-            // Optionnel : vérifier que l'utilisateur est propriétaire ou admin
-            string userId = User.Identity?.Name ?? "";
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "";
             bool isAdmin = User.IsInRole("Admin");
+
             if (annotation.UserId != userId && !isAdmin)
-            {
                 return Forbid();
-            }
 
             var dto = new AnnotationDTO
             {
@@ -97,7 +94,6 @@ namespace CantineAPI.Controllers
         }
 
         // PUT api/annotation/{id}
-        // Modifier sa note/commentaire
         [HttpPut("{id}")]
         [Authorize]
         public async Task<IActionResult> UpdateAnnotation(int id, AnnotationUpdateDTO dto)
@@ -105,17 +101,14 @@ namespace CantineAPI.Controllers
             var annotation = await _context.Annotations.FindAsync(id);
             if (annotation == null) return NotFound();
 
-            string userId = User.Identity?.Name ?? "";
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "";
             bool isAdmin = User.IsInRole("Admin");
+
             if (annotation.UserId != userId && !isAdmin)
-            {
                 return Forbid();
-            }
 
             if (dto.Note < 1 || dto.Note > 5)
-            {
                 return BadRequest("La note doit être comprise entre 1 et 5.");
-            }
 
             annotation.Note = dto.Note;
             annotation.Commentaire = dto.Commentaire;
@@ -133,12 +126,11 @@ namespace CantineAPI.Controllers
             var annotation = await _context.Annotations.FindAsync(id);
             if (annotation == null) return NotFound();
 
-            string userId = User.Identity?.Name ?? "";
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "";
             bool isAdmin = User.IsInRole("Admin");
+
             if (annotation.UserId != userId && !isAdmin)
-            {
                 return Forbid();
-            }
 
             _context.Annotations.Remove(annotation);
             await _context.SaveChangesAsync();
@@ -147,7 +139,6 @@ namespace CantineAPI.Controllers
         }
 
         // GET api/annotation/all
-        // L'admin voit toutes les annotations
         [HttpGet("all")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<AnnotationDTO>>> GetAllAnnotations()
@@ -168,7 +159,6 @@ namespace CantineAPI.Controllers
         }
 
         // GET api/annotation/average-per-menu
-        // L'admin récupère la moyenne des notes par menu
         [HttpGet("average-per-menu")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<object>>> GetAverageNotePerMenu()
@@ -180,7 +170,6 @@ namespace CantineAPI.Controllers
                     MenuId = g.Key,
                     AverageNote = g.Average(a => a.Note),
                     Count = g.Count(),
-                    // Optionnel: ajouter le nom du menu (requiert une navigation vers Menu)
                     MenuName = _context.Menus.Where(m => m.Id == g.Key).Select(m => m.Name).FirstOrDefault()
                 })
                 .ToListAsync();

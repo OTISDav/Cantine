@@ -172,3 +172,4 @@
 /home/otis/CantineAPI/obj/Debug/net8.0/CantineAPI.pdb
 /home/otis/CantineAPI/obj/Debug/net8.0/CantineAPI.genruntimeconfig.cache
 /home/otis/CantineAPI/obj/Debug/net8.0/ref/CantineAPI.dll
+/home/otis/CantineAPI/bin/Debug/net8.0/mon-app-pret/package.json
