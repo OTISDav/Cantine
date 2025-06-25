@@ -17,5 +17,8 @@ namespace CantineAPI.Models
         public string Dessert { get; set; } = string.Empty;
 
         public string Boisson { get; set; } = string.Empty;
+
+        public string? PhotoUrl { get; set; }
+        public decimal Prix { get; set; }
     }
 }

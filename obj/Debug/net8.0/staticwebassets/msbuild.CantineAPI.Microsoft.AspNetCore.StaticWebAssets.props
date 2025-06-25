@@ -1,0 +1,52 @@
+﻿<Project>
+  <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\menus\00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg))">
+      <SourceType>Package</SourceType>
+      <SourceId>CantineAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CantineAPI</BasePath>
+      <RelativePath>images/menus/00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\menus\00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\menus\b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>CantineAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CantineAPI</BasePath>
+      <RelativePath>images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\menus\b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\menus\e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>CantineAPI</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CantineAPI</BasePath>
+      <RelativePath>images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\menus\e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png))</OriginalItemSpec>
+    </StaticWebAsset>
+  </ItemGroup>
+</Project>

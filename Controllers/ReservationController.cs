@@ -6,11 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
+
 namespace CantineAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // Tous les endpoints demandent une authentification
+    [Authorize]
     public class ReservationController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -50,7 +51,6 @@ namespace CantineAPI.Controllers
             return Ok(reservations);
         }
 
-        // GET api/reservation/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ReservationDTO>> GetReservation(int id)
         {
@@ -84,7 +84,7 @@ namespace CantineAPI.Controllers
 
             var reservation = new Reservation
             {
-                UserId = userId, // prend l'utilisateur connecté
+                UserId = userId,
                 MenuId = dto.MenuId,
                 ReservationDate = dto.ReservationDate,
                 Status = dto.Status

@@ -1,11 +1,77 @@
 {
   "Version": 1,
-  "Hash": "s4QfjXcaH5uOP7azYWltxUiS5epWBgOGRdRR8l6adM4=",
+  "Hash": "NpN0prEzEnp/E8eRgmT6J8Nnj/pLRcmAj/DQXHYCmTw=",
   "Source": "CantineAPI",
   "BasePath": "_content/CantineAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "CantineAPI/wwwroot",
+      "Source": "CantineAPI",
+      "ContentRoot": "/home/otis/CantineAPI/wwwroot/",
+      "BasePath": "_content/CantineAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/otis/CantineAPI/wwwroot/images/menus/00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg",
+      "SourceId": "CantineAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/otis/CantineAPI/wwwroot/",
+      "BasePath": "_content/CantineAPI",
+      "RelativePath": "images/menus/00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/menus/00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg"
+    },
+    {
+      "Identity": "/home/otis/CantineAPI/wwwroot/images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png",
+      "SourceId": "CantineAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/otis/CantineAPI/wwwroot/",
+      "BasePath": "_content/CantineAPI",
+      "RelativePath": "images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png"
+    },
+    {
+      "Identity": "/home/otis/CantineAPI/wwwroot/images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png",
+      "SourceId": "CantineAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/otis/CantineAPI/wwwroot/",
+      "BasePath": "_content/CantineAPI",
+      "RelativePath": "images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png"
+    }
+  ]
 }

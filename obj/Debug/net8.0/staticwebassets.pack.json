@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "/home/otis/CantineAPI/wwwroot/images/menus/00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg",
+      "PackagePath": "staticwebassets/images/menus/00ec8306-10b9-4e29-aaea-6eb8317dd747_Authentic Haitian spaghetti - Mika's Table -Flavors of Island Cuisine.jpeg"
+    },
+    {
+      "Id": "/home/otis/CantineAPI/wwwroot/images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png",
+      "PackagePath": "staticwebassets/images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png"
+    },
+    {
+      "Id": "/home/otis/CantineAPI/wwwroot/images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png",
+      "PackagePath": "staticwebassets/images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.CantineAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.CantineAPI.props",
+      "PackagePath": "build\\CantineAPI.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.CantineAPI.props",
+      "PackagePath": "buildMultiTargeting\\CantineAPI.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.CantineAPI.props",
+      "PackagePath": "buildTransitive\\CantineAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
