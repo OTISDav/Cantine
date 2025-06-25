@@ -6,6 +6,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Linq; 
 using System.Collections.Generic; // Nécéssaire pour List<Claim>
 
 namespace CantineAPI.Controllers
@@ -79,7 +80,8 @@ namespace CantineAPI.Controllers
             return Ok(new AuthResponseDto
             {
                 Token = token,
-                UserId = user.Id // L'ID de l'utilisateur est maintenant inclus ici
+                UserId = user.Id, // L'ID de l'utilisateur est maintenant inclus ici
+                Role = roles.FirstOrDefault() ?? string.Empty
             });
             // --- FIN DE LA MODIFICATION ---
         }
