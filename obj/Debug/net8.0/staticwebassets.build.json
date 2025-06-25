@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NpN0prEzEnp/E8eRgmT6J8Nnj/pLRcmAj/DQXHYCmTw=",
+  "Hash": "SrZEh6DvO2NtT2ZLk8Xa+W/CsAr4+Q7cDvKWrgSRAAg=",
   "Source": "CantineAPI",
   "BasePath": "_content/CantineAPI",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/menus/b6e5a7ec-fbde-455f-8534-c39c8d6fa2ea_Capture d’écran du 2025-06-22 11-07-31.png"
+    },
+    {
+      "Identity": "/home/otis/CantineAPI/wwwroot/images/menus/d99baff2-6587-4961-bd11-981c27499fb1_spago.jpeg",
+      "SourceId": "CantineAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/otis/CantineAPI/wwwroot/",
+      "BasePath": "_content/CantineAPI",
+      "RelativePath": "images/menus/d99baff2-6587-4961-bd11-981c27499fb1_spago.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/menus/d99baff2-6587-4961-bd11-981c27499fb1_spago.jpeg"
     },
     {
       "Identity": "/home/otis/CantineAPI/wwwroot/images/menus/e800f42f-2e42-4e85-9ad6-7d37e3cbd5dc_Capture d’écran du 2025-06-22 10-24-01.png",

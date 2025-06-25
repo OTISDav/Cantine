@@ -1,6 +1,5 @@
 /home/otis/CantineAPI/bin/Debug/net8.0/appsettings.Development.json
 /home/otis/CantineAPI/bin/Debug/net8.0/appsettings.json
-/home/otis/CantineAPI/bin/Debug/net8.0/mon-app-pret/package.json
 /home/otis/CantineAPI/bin/Debug/net8.0/CantineAPI.staticwebassets.runtime.json
 /home/otis/CantineAPI/bin/Debug/net8.0/CantineAPI
 /home/otis/CantineAPI/bin/Debug/net8.0/CantineAPI.deps.json

@@ -38,10 +38,8 @@ namespace CantineAPI.Controllers
                     PlatPrincipal = m.PlatPrincipal,
                     Dessert = m.Dessert,
                     Boisson = m.Boisson,
-                    // --- AJOUT DE PhotoUrl et Prix lors de la récupération ---
                     PhotoUrl = m.PhotoUrl,
                     Prix = m.Prix
-                    // ----------------------------------------------------
                 })
                 .ToListAsync();
 
@@ -52,7 +50,6 @@ namespace CantineAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMenu(int id)
         {
-            // Pas besoin de 'Select' pour un FindAsync, mappez directement l'objet trouvé au DTO
             var menu = await _context.Menus.FindAsync(id);
             if (menu == null) return NotFound();
 
@@ -63,10 +60,8 @@ namespace CantineAPI.Controllers
                 PlatPrincipal = menu.PlatPrincipal,
                 Dessert = menu.Dessert,
                 Boisson = menu.Boisson,
-                // --- AJOUT DE PhotoUrl et Prix pour un menu unique ---
                 PhotoUrl = menu.PhotoUrl,
                 Prix = menu.Prix
-                // --------------------------------------------------
             };
 
             return Ok(menuDto);
@@ -79,23 +74,18 @@ namespace CantineAPI.Controllers
         {
             var menu = new Menu
             {
-                // L'ID ne doit généralement pas être défini ici, la base de données le génère
-                // Si votre base de données gère les IDs automatiquement (ce qui est courant), supprimez 'Id = menuDto.Id'
                 // Id = menuDto.Id,
                 Date = menuDto.Date,
                 PlatPrincipal = menuDto.PlatPrincipal,
                 Dessert = menuDto.Dessert,
                 Boisson = menuDto.Boisson,
-                // --- AJOUT DE PhotoUrl et Prix lors de la création ---
                 PhotoUrl = menuDto.PhotoUrl,
                 Prix = menuDto.Prix
-                // --------------------------------------------------
             };
 
             _context.Menus.Add(menu);
             await _context.SaveChangesAsync();
 
-            // Retourne le DTO qui a été utilisé pour la création, ou un DTO remappé si l'ID est généré par la DB
             return CreatedAtAction(nameof(GetMenu), new { id = menu.Id }, menuDto);
         }
 
@@ -104,7 +94,7 @@ namespace CantineAPI.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateMenu(int id, MenuDTO menuDto)
         {
-            if (id != menuDto.Id) // Vérification de cohérence entre l'ID de l'URL et l'ID du corps
+            if (id != menuDto.Id) 
             {
                 return BadRequest("L'ID du menu dans l'URL ne correspond pas à l'ID du menu dans le corps de la requête.");
             }
@@ -133,10 +123,10 @@ namespace CantineAPI.Controllers
                 if (!_context.Menus.Any(e => e.Id == id))
                     return NotFound();
                 else
-                    throw; // Lance l'exception si c'est un autre type d'erreur
+                    throw;
             }
 
-            return NoContent(); // 204 No Content est une réponse standard pour les PUT réussis
+            return NoContent();
         }
 
         // DELETE /api/menu/{id}
@@ -153,7 +143,8 @@ namespace CantineAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("uploadimage")] // URL: /api/menu/uploadimage
+        // POST /api/menu/uploadimage
+        [HttpPost("uploadimage")] 
         [Authorize(Roles = "Admin")]
 
         [ApiExplorerSettings(IgnoreApi = true)]
@@ -173,7 +164,7 @@ namespace CantineAPI.Controllers
             }
 
             string imageUrl = $"/images/menus/{uniqueFileName}";
-            return Ok(imageUrl); // Renvoie l'URL pour le frontend
+            return Ok(imageUrl); 
         }
 
     }
