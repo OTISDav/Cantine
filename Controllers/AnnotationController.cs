@@ -30,16 +30,16 @@ namespace CantineAPI.Controllers
 
             var menu = await _context.Menus.FindAsync(dto.MenuId);
             if (menu == null)
-                return BadRequest("Menu inexistant.");
+                return BadRequest("Menu inexistant."); // <-- PREMIÈRE CAUSE POTENTIELLE DE VOTRE 400
 
             var existing = await _context.Annotations
                 .FirstOrDefaultAsync(a => a.UserId == userId && a.MenuId == dto.MenuId);
 
             if (existing != null)
-                return BadRequest("Vous avez déjà noté ce menu.");
+                return BadRequest("Vous avez déjà noté ce menu."); // <-- DEUXIÈME CAUSE POTENTIELLE DE VOTRE 400
 
             if (dto.Note < 1 || dto.Note > 5)
-                return BadRequest("La note doit être comprise entre 1 et 5.");
+                return BadRequest("La note doit être comprise entre 1 et 5."); // <-- TROISIÈME CAUSE POTENTIELLE DE VOTRE 400
 
             var annotation = new Annotation
             {
@@ -64,6 +64,32 @@ namespace CantineAPI.Controllers
             };
 
             return CreatedAtAction(nameof(GetAnnotation), new { id = annotation.Id }, resultDto);
+        }
+
+
+        // GET api/annotation/my-annotations
+        [HttpGet("my-annotations")] // Or "mes-annotations" if you prefer French routes
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<AnnotationDTO>>> GetAnnotationsForCurrentUser()
+        {
+            string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+                return Unauthorized("Utilisateur non authentifié.");
+
+            var annotations = await _context.Annotations
+                .Where(a => a.UserId == userId)
+                .Select(a => new AnnotationDTO
+                {
+                    Id = a.Id,
+                    UserId = a.UserId,
+                    MenuId = a.MenuId,
+                    Note = a.Note,
+                    Commentaire = a.Commentaire,
+                    CreatedAt = a.CreatedAt
+                })
+                .ToListAsync();
+
+            return Ok(annotations);
         }
 
         // GET api/annotation/{id}
