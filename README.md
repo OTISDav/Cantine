@@ -17,7 +17,7 @@ CantineAPI est une API REST pour la gestion de cantine scolaire :
 - Identity & Roles
 - Authentification via JWT
 - Swagger pour documentation interactive
-- Postman pour tests API
+- Postman pour tests API(lacollection Postman en JON{'/collection postman})
 
 ---
 ##Url Swagger

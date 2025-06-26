@@ -30,16 +30,16 @@ namespace CantineAPI.Controllers
 
             var menu = await _context.Menus.FindAsync(dto.MenuId);
             if (menu == null)
-                return BadRequest("Menu inexistant."); // <-- PREMIÈRE CAUSE POTENTIELLE DE VOTRE 400
+                return BadRequest("Menu inexistant.");
 
             var existing = await _context.Annotations
                 .FirstOrDefaultAsync(a => a.UserId == userId && a.MenuId == dto.MenuId);
 
             if (existing != null)
-                return BadRequest("Vous avez déjà noté ce menu."); // <-- DEUXIÈME CAUSE POTENTIELLE DE VOTRE 400
+                return BadRequest("Vous avez déjà noté ce menu."); 
 
             if (dto.Note < 1 || dto.Note > 5)
-                return BadRequest("La note doit être comprise entre 1 et 5."); // <-- TROISIÈME CAUSE POTENTIELLE DE VOTRE 400
+                return BadRequest("La note doit être comprise entre 1 et 5.");
 
             var annotation = new Annotation
             {
@@ -68,7 +68,7 @@ namespace CantineAPI.Controllers
 
 
         // GET api/annotation/my-annotations
-        [HttpGet("my-annotations")] // Or "mes-annotations" if you prefer French routes
+        [HttpGet("my-annotations")] 
         [Authorize]
         public async Task<ActionResult<IEnumerable<AnnotationDTO>>> GetAnnotationsForCurrentUser()
         {
@@ -92,7 +92,6 @@ namespace CantineAPI.Controllers
             return Ok(annotations);
         }
 
-        // GET api/annotation/{id}
         [HttpGet("{id}")]
         [Authorize]
         public async Task<ActionResult<AnnotationDTO>> GetAnnotation(int id)

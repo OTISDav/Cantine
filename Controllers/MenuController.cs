@@ -102,16 +102,13 @@ namespace CantineAPI.Controllers
             var menu = await _context.Menus.FindAsync(id);
             if (menu == null) return NotFound();
 
-            // Mettez à jour toutes les propriétés modifiables du modèle de base de données avec les valeurs du DTO
             menu.Date = menuDto.Date;
             menu.PlatPrincipal = menuDto.PlatPrincipal;
             menu.Dessert = menuDto.Dessert;
             menu.Boisson = menuDto.Boisson;
-            // --- AJOUT DE PhotoUrl et Prix lors de la mise à jour ---
             menu.PhotoUrl = menuDto.PhotoUrl;
             menu.Prix = menuDto.Prix;
-            // ------------------------------------------------------
-
+            
             _context.Entry(menu).State = EntityState.Modified;
 
             try

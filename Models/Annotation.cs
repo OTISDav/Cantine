@@ -15,7 +15,7 @@ namespace CantineAPI.Models
         public int MenuId { get; set; }
         public Menu Menu { get; set; } = null!;
 
-        public int Note { get; set; }  // 1 à 5
+        public int Note { get; set; }
 
         public string? Commentaire { get; set; }
 

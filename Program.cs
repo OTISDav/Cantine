@@ -9,17 +9,14 @@ using CantineAPI.SwaggerFilters;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// --- Déplacer ces configurations ici, avant le app.Build() ---
-// DB SQLite
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// Authentification JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,10 +40,8 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// ********** AJOUTEZ CETTE LIGNE **********
-builder.Services.AddAuthorization(); // C'est crucial pour UseAuthorization()
+builder.Services.AddAuthorization(); 
 
-// Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -86,17 +81,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// --- PLACEZ LE BLOC DE MIGRATION JUSTE APRÈS app.Build() ---
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
         var context = services.GetRequiredService<ApplicationDbContext>();
-        context.Database.Migrate(); // Applique toutes les migrations en attente
-
-        // Si vous avez du code de seeding (données initiales)
-        // await SeedData.Initialize(services);
+        context.Database.Migrate(); 
 
     }
     catch (Exception ex)
@@ -105,10 +96,8 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "An error occurred while migrating or seeding the database.");
     }
 }
-// --- FIN DU BLOC DE MIGRATION ---
 
 
-// Pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -121,7 +110,7 @@ app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-app.UseAuthorization(); // Cette ligne aura maintenant les services nécessaires
+app.UseAuthorization(); 
 
 app.UseCors("AllowAll");
 

@@ -30,7 +30,6 @@ namespace CantineAPI.Controllers
 
             IQueryable<Reservation> query = _context.Reservations;
 
-            // Si pas admin, ne retourne que les réservations de l'utilisateur
             if (!isAdmin)
             {
                 query = query.Where(r => r.UserId == userId);
@@ -60,7 +59,6 @@ namespace CantineAPI.Controllers
             var reservation = await _context.Reservations.FindAsync(id);
             if (reservation == null) return NotFound();
 
-            // Si pas admin, vérifier que la réservation appartient à l'utilisateur
             if (!isAdmin && reservation.UserId != userId)
                 return Forbid();
 
@@ -115,7 +113,6 @@ namespace CantineAPI.Controllers
             var reservation = await _context.Reservations.FindAsync(id);
             if (reservation == null) return NotFound();
 
-            // Si pas admin, vérifier que l'utilisateur possède la réservation
             if (!isAdmin && reservation.UserId != userId)
                 return Forbid();
 

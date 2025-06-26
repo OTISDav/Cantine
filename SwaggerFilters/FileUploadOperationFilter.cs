@@ -19,7 +19,6 @@ namespace CantineAPI.SwaggerFilters
 
             if (formFileParameters.Any())
             {
-                // Si l'opération contient un IFormFile, définissez le type de contenu sur 'multipart/form-data'
                 operation.RequestBody = new OpenApiRequestBody
                 {
                     Content = {
@@ -30,7 +29,7 @@ namespace CantineAPI.SwaggerFilters
                                 Type = "object",
                                 Properties =
                                 {
-                                    ["file"] = new OpenApiSchema // Nom du paramètre 'file' de votre action UploadMenuImage
+                                    ["file"] = new OpenApiSchema
                                     {
                                         Type = "string",
                                         Format = "binary",
@@ -42,7 +41,6 @@ namespace CantineAPI.SwaggerFilters
                     }
                 };
 
-                // Supprime les anciens paramètres qui pourraient être générés pour IFormFile
                 foreach (var parameter in formFileParameters)
                 {
                     var parameterToRemove = operation.Parameters.FirstOrDefault(p => p.Name == parameter.Name);
